@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+  <h1>Приборная панель</h1>
+  {% with total_images_created=request.user.images_created.count %}
+    <p>Добро пожаловать на вашу приборную панель!<br>Изображений в ваших закладках: {{ total_images_created }}</p>
+    <p>Чтобы добавить изображения в закладки с других сайтов, перетащите следующую кнопку на панель закладок →
+      <a href="javascript:{% include "bookmarklet_launcher.js" %}" class="button">В закладки!</a></p>
+  {% endwith %}
+  <p>Вы можете <a href="{% url 'edit' %}">редактировать свой профиль</a>
+    или <a href="{% url 'password_change' %}">изменить пароль</a></p>
+{% endblock content %}
